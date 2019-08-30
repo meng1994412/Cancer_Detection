@@ -1,6 +1,7 @@
 # Cancer Detection
 ## Objectives
 **This is ongoing project**
+
 Implemented Mask R-CNN model to automatically segment the boundary of potential cancerous regions (specifically Melanoma) from dermoscopic images.
 
 ## Packages Used
@@ -25,7 +26,7 @@ Just as we have a training configuration, we also have an prediction/inference c
 The `LesionBoundaryDataset` class ([check here](https://github.com/meng1994412/Cancer_Detection/blob/master/lesions.py#L69-L143)) is responsible for managing the lesion dataset, including loading both images and their corresponding masks from disk.
 
 ### Train & evaluate the Mask R-CNN model
-The `lesions.py` has three modes, including training, predicting, and investigating. The investigating mode is used to check the training set to make sure the data is properly stored. It is a wise choice to start with a pre-trained model and then fine-tune it. Thus, Mask R-CNN model with ResNet backbone pre-trained on the COCO is used, which is named `mask_rcnn_coco.h5` ([download site](https://github.com/matterport/Mask_RCNN/releases)). We first freeze all the layers before head, and train the head for 25 epochs. After the head have start to learn patterns, we could pause the training and unfreeze all the layers before, and continue the training but with smaller learning rate.
+The `lesions.py` has three modes, including training ([check here](https://github.com/meng1994412/Cancer_Detection/blob/master/lesions.py#L157-L195)), predicting ([check](https://github.com/meng1994412/Cancer_Detection/blob/master/lesions.py#L197-L248)), and investigating ([check here](https://github.com/meng1994412/Cancer_Detection/blob/master/lesions.py#L250-L285)). The investigating mode is used to check the training set to make sure the data is properly stored. It is a wise choice to start with a pre-trained model and then fine-tune it. Thus, Mask R-CNN model with ResNet backbone pre-trained on the COCO is used, which is named `mask_rcnn_coco.h5` ([download site](https://github.com/matterport/Mask_RCNN/releases)). We first freeze all the layers before head, and train the head for 25 epochs. After the head have start to learn patterns, we could pause the training and unfreeze all the layers before, and continue the training but with smaller learning rate.
 
 The following command can start to train the Mask R-CNN model.
 ```
@@ -40,4 +41,4 @@ python lesions.py --investigate
 ```
 
 ## Next step
-Since I just finished first-time training to get a sense of training Mask R-CNN model, there are many modifications to be done in the future, including increase the accuracy while reducing the possible overfitting situation. 
+Since I just finished first-time training to get a sense of training Mask R-CNN model, there are many modifications to be done in the future, including increase the accuracy while reducing the possible overfitting situation.
